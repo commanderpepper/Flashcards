@@ -23,6 +23,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
+            // Serialization
+            implementation(libs.kotlinx.serialization)
+            implementation(libs.androidx.viewmodel)
         }
     }
 }
