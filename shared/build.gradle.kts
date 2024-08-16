@@ -26,6 +26,9 @@ kotlin {
             // Serialization
             implementation(libs.kotlinx.serialization)
             implementation(libs.androidx.viewmodel)
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.koin.core)
+            implementation(libs.koin.android)
         }
     }
 }
