@@ -25,10 +25,13 @@ kotlin {
             // put your Multiplatform dependencies here
             // Serialization
             implementation(libs.kotlinx.serialization)
-            implementation(libs.androidx.viewmodel)
+            implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.androidx.lifecycle.runtimeCompose)
+
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
-            implementation(libs.koin.android)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.composeVM)
         }
     }
 }
