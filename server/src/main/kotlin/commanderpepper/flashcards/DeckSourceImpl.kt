@@ -6,7 +6,7 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import models.data.DeckNetwork
 
-class DeckNetworkImpl(): DeckSource {
+class DeckSourceImpl(): DeckSource {
 
     private val decks = mutableMapOf<String, DeckNetwork>()
     private val mutex = Mutex()
