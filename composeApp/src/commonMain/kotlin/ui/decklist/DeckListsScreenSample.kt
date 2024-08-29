@@ -1,16 +1,16 @@
 package ui.decklist
 
-import models.ui.DeckId
-import models.ui.DeckListsItem
-import models.ui.DeckName
+import models.ui.decklist.DeckListsItemId
+import models.ui.decklist.DeckListsItemUI
+import models.ui.decklist.DeckListsItemName
 
-val SAMPLE_DECK_LIST_SAMPLE_ONE = DeckListsItem(DeckName("DECK ONE"), DeckId(""))
-val SAMPLE_DECK_LIST_SAMPLE_TWO = DeckListsItem(DeckName("DECK TWO"), DeckId(""))
-val SAMPLE_DECK_LIST_SAMPLE_THREE = DeckListsItem(DeckName("DECK THREE"), DeckId(""))
-val SAMPLE_DECK_LIST_SAMPLE_FOUR = DeckListsItem(DeckName("DECK FOUR"), DeckId(""))
-val SAMPLE_DECK_LIST_SAMPLE_FIVE = DeckListsItem(DeckName("DECK FIVE"), DeckId(""))
-val SAMPLE_DECK_LIST_SAMPLE_SIX = DeckListsItem(DeckName("DECK SIX"), DeckId(""))
-val SAMPLE_DECK_LIST_SAMPLE_SEVEN = DeckListsItem(DeckName("DECK SEVEN"), DeckId(""))
+val SAMPLE_DECK_LIST_SAMPLE_ONE = DeckListsItemUI(DeckListsItemName("DECK ONE"), DeckListsItemId(""))
+val SAMPLE_DECK_LIST_SAMPLE_TWO = DeckListsItemUI(DeckListsItemName("DECK TWO"), DeckListsItemId(""))
+val SAMPLE_DECK_LIST_SAMPLE_THREE = DeckListsItemUI(DeckListsItemName("DECK THREE"), DeckListsItemId(""))
+val SAMPLE_DECK_LIST_SAMPLE_FOUR = DeckListsItemUI(DeckListsItemName("DECK FOUR"), DeckListsItemId(""))
+val SAMPLE_DECK_LIST_SAMPLE_FIVE = DeckListsItemUI(DeckListsItemName("DECK FIVE"), DeckListsItemId(""))
+val SAMPLE_DECK_LIST_SAMPLE_SIX = DeckListsItemUI(DeckListsItemName("DECK SIX"), DeckListsItemId(""))
+val SAMPLE_DECK_LIST_SAMPLE_SEVEN = DeckListsItemUI(DeckListsItemName("DECK SEVEN"), DeckListsItemId(""))
 
 val SAMPLE_DECK_LIST = listOf(
     SAMPLE_DECK_LIST_SAMPLE_ONE,

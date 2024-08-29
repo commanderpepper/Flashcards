@@ -12,16 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import models.ui.DeckId
-import models.ui.DeckListsItem
+import models.ui.decklist.DeckListsItemId
+import models.ui.decklist.DeckListsItemUI
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import kotlin.jvm.JvmInline
 
 @Composable
-fun DeckListsItemUI(deckListsItem: DeckListsItem, onDeckClick: (DeckId?) -> Unit) {
-    Card(modifier = Modifier.fillMaxWidth().height(128.dp).clickable { onDeckClick(deckListsItem.id) }) {
+fun DeckListsItemUI(deckListsItemUI: DeckListsItemUI, onDeckClick: (DeckListsItemId) -> Unit) {
+    Card(modifier = Modifier.fillMaxWidth().height(128.dp).clickable { onDeckClick(deckListsItemUI.id) }) {
         Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = deckListsItem.name.nameValue)
+            Text(text = deckListsItemUI.name.nameValue)
         }
     }
 }
@@ -29,5 +28,5 @@ fun DeckListsItemUI(deckListsItem: DeckListsItem, onDeckClick: (DeckId?) -> Unit
 @Preview
 @Composable
 private fun DeckListsItemUIPreview() {
-    DeckListsItemUI(deckListsItem = SAMPLE_DECK_LIST_SAMPLE_ONE, onDeckClick = {})
+    DeckListsItemUI(deckListsItemUI = SAMPLE_DECK_LIST_SAMPLE_ONE, onDeckClick = {})
 }
