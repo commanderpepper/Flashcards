@@ -22,6 +22,8 @@ kotlin {
     jvm()
     
     sourceSets {
+//        val desktopMain by getting
+
         commonMain.dependencies {
             // put your Multiplatform dependencies here
             // Serialization
@@ -33,7 +35,28 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.composeVM)
+
+            //Network
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.contentnegotiation)
+            implementation(libs.ktor.client.json)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.client.serialization)
+            implementation(libs.ktor.server.serialization)
         }
+
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+        }
+
+//        desktopMain.dependencies {
+//
+//        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+        }
+
     }
 }
 
