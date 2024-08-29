@@ -45,6 +45,13 @@ kotlin {
             implementation(libs.ktor.server.serialization)
         }
 
+        commonTest.dependencies {
+            implementation(libs.ktor.client.mock)
+            implementation(libs.kotlin.test.junit)
+            implementation(libs.junit.jupiter)
+            implementation(libs.kotlin.coroutines.test)
+        }
+
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
         }
