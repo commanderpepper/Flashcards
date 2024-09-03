@@ -17,6 +17,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 import models.data.DeckNetwork
 
 private val deckSource = DeckSourceImpl()
@@ -33,7 +34,12 @@ fun main() {
 
 fun Application.module() {
     install(ContentNegotiation){
-        json()
+        json(
+            Json {
+                prettyPrint = true
+                isLenient = true
+            }
+        )
     }
     routing {
 

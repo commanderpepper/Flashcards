@@ -45,7 +45,7 @@ fun DeckListsScreen(modifier: Modifier = Modifier, deckListsScreenState: DeckLis
 fun DeckListsScreen(deckList: List<DeckListsItemUI>, onDeckClick: (DeckListsItemId) -> Unit) {
     val verticalArrangement = Arrangement.spacedBy(8.dp)
     LazyColumn(contentPadding = PaddingValues(8.dp), verticalArrangement = verticalArrangement) {
-        items(items = deckList, key = {item -> item.id}){ item ->
+        items(items = deckList, key = {item -> item.id.idValue}){ item ->
             DeckListsItemUI(deckListsItemUI = item, onDeckClick = onDeckClick)
         }
     }

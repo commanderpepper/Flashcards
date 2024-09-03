@@ -7,7 +7,7 @@ import models.data.DeckNetwork
 
 class FlashcardDataSourceImpl(private val client: HttpClient): FlashcardDataSource {
     override suspend fun getFlashcards(): List<DeckNetwork> {
-        return client.get("").body<List<DeckNetwork>>()
+        return client.get("/decks").body<List<DeckNetwork>>()
     }
 
     override suspend fun getFlashcard(deckId: String): DeckNetwork? {
