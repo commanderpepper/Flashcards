@@ -16,10 +16,11 @@ import models.ui.decklist.DeckListsItemId
 import models.ui.decklist.DeckListsItemUI
 import models.ui.decklist.DeckListsScreenState
 import models.viewmodels.DeckListsScreenViewModel
+import org.koin.compose.viewmodel.koinViewModel
 import ui.util.Loading
 
 @Composable
-fun DeckListsScreenState(modifier: Modifier, viewModel: DeckListsScreenViewModel, onDeckClick: (DeckListsItemId) -> Unit){
+fun DeckListsScreenState(modifier: Modifier, viewModel: DeckListsScreenViewModel = koinViewModel<DeckListsScreenViewModel>(), onDeckClick: (DeckListsItemId) -> Unit){
     val state = viewModel.deckListsScreenState.collectAsState()
     DeckListsScreen(modifier = modifier, deckListsScreenState = state.value, onDeckClick = onDeckClick)
 }

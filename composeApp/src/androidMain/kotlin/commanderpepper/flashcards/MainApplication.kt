@@ -1,6 +1,7 @@
 package commanderpepper.flashcards
 
 import android.app.Application
+import domain.di.domainModule
 import models.viewmodels.di.viewModelModule
 import network.di.networkModule
 import org.koin.android.ext.koin.androidContext
@@ -16,7 +17,7 @@ class MainApplication: Application() {
             androidLogger()
             androidContext(this@MainApplication)
             //add modules here
-            modules(listOf(viewModelModule, networkModule, useCaseModule))
+            modules(listOf(viewModelModule, networkModule, useCaseModule, domainModule))
         }
     }
 }

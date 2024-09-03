@@ -36,6 +36,9 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.composeVM)
 
+            //Logging
+            implementation(libs.kermit)
+
             //Network
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.contentnegotiation)

@@ -1,8 +1,8 @@
 package models.viewmodels
 
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import co.touchlab.kermit.Logger
 import domain.FlashcardRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -19,13 +19,21 @@ class DeckListsScreenViewModel(private val flashcardRepo: FlashcardRepo): ViewMo
 
     init {
         viewModelScope.launch {
-            val decks = flashcardRepo.getDecks()
-            if(decks.isNotEmpty()){
-                _deckListsScreenState.value = DeckListsScreenState.Success(decks = decks.map {
-                    DeckListsItemUI(name = DeckListsItemName(it.name), id = DeckListsItemId(it.id))
-                })
+            try {
+                val decks = flashcardRepo.getDecks()
+                if(decks.isNotEmpty()){
+                    _deckListsScreenState.value = DeckListsScreenState.Success(decks = decks.map {
+                        DeckListsItemUI(name = DeckListsItemName(it.name), id = DeckListsItemId(it.id))
+                    })
+                }
+                else {
+                    _deckListsScreenState.value = DeckListsScreenState.Error
+                }
             }
-            else {
+            catch(e: Exception){
+                Logger.w("Humza", e.cause) {
+                    e.message ?: ""
+                }
                 _deckListsScreenState.value = DeckListsScreenState.Error
             }
         }

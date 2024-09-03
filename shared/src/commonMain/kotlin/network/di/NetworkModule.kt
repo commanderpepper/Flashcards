@@ -40,8 +40,8 @@ val networkModule = module {
             }
             install(DefaultRequest) {
                 url {
-                    protocol = URLProtocol.HTTPS
-                    host = "http://127.0.0.1:8080"
+                    protocol = URLProtocol.HTTP
+                    host = "10.0.2.2:8080"
                     path("/")
                 }
                 header(HttpHeaders.ContentType, ContentType.Application.Json)
