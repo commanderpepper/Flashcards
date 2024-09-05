@@ -3,13 +3,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import ui.deck.DeckScreen
 import ui.decklist.DeckListsScreenState
 
-enum class FlashcardScreen(val title: String){
+enum class FlashcardScreen(val route: String) {
     List("list"),
     Deck("deck"),
     Edit("edit")
@@ -23,17 +26,23 @@ fun App() {
         NavHost(
             modifier = Modifier.fillMaxSize(),
             navController = navController,
-            startDestination = FlashcardScreen.List.title,
+            startDestination = FlashcardScreen.List.route,
         ) {
-            composable(route = FlashcardScreen.List.title) {
-                DeckListsScreenState(modifier = Modifier.fillMaxSize()){
-
+            composable(route = FlashcardScreen.List.route) {
+                DeckListsScreenState(modifier = Modifier.fillMaxSize()) { deckListsItemId ->
+                    navController.navigate(route = FlashcardScreen.Deck.route + "?deckId=${deckListsItemId.idValue}")
                 }
             }
-            composable(route = FlashcardScreen.Deck.title) {
-
+            composable(
+                route = FlashcardScreen.Deck.route + "?deckId={deckId}",
+                arguments = listOf(navArgument("deckId") {
+                    type = NavType.StringType
+                    nullable = false
+                })
+            ) {
+                DeckScreen(modifier = Modifier.fillMaxSize())
             }
-            composable(route = FlashcardScreen.Edit.title) {
+            composable(route = FlashcardScreen.Edit.route) {
 
             }
         }

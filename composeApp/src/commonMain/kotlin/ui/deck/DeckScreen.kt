@@ -7,11 +7,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import models.ui.deck.DeckScreenState
 import models.ui.deck.FlashcardItem
+import models.viewmodels.DeckScreenViewModel
+import org.koin.compose.viewmodel.koinViewModel
 import ui.util.Loading
+
+@Composable
+fun DeckScreen(modifier: Modifier, deckScreenViewModel: DeckScreenViewModel = koinViewModel<DeckScreenViewModel>()){
+    val deckScreenState = deckScreenViewModel.deckScreenState.collectAsState()
+    DeckScreen(modifier = modifier, deckScreenState = deckScreenState.value)
+}
 
 @Composable
 fun DeckScreen(modifier: Modifier, deckScreenState: DeckScreenState) {

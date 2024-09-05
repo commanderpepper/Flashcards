@@ -19,6 +19,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import models.data.DeckNetwork
+import models.data.FlashcardNetwork
 
 private val deckSource = DeckSourceImpl()
 
@@ -26,7 +27,13 @@ fun main() {
     val job = Job()
     val scope = CoroutineScope(Dispatchers.Default + job)
     scope.launch {
-        deckSource.insertDeck(DeckNetwork("1", "Test", emptyList()))
+        deckSource.insertDeck(
+            DeckNetwork(
+                "1",
+                "Test",
+                listOf(FlashcardNetwork("This is the front", "This is the back"))
+            )
+        )
     }
     embeddedServer(Netty, port = SERVER_PORT, host = "0.0.0.0", module = Application::module)
         .start(wait = true)
