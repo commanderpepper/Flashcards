@@ -7,5 +7,5 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { DeckListsScreenViewModel(get()) }
-    viewModel { DeckScreenViewModel(get()) }
+    viewModel { DeckScreenViewModel(get(), get()) }
 }
