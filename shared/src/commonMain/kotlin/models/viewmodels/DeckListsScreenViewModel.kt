@@ -8,12 +8,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import models.ui.decklist.DeckListsItemId
-import models.ui.decklist.DeckListsItemName
-import models.ui.decklist.DeckListsItemUI
 import models.ui.decklist.DeckListsScreenState
+import usecase.data.ui.DeckDomainToDeckListsItemUIUseCase
 
-class DeckListsScreenViewModel(private val flashcardRepo: FlashcardRepo): ViewModel() {
+class DeckListsScreenViewModel(private val flashcardRepo: FlashcardRepo, private val deckDomainToDeckListsItemUIUseCase: DeckDomainToDeckListsItemUIUseCase): ViewModel() {
     private val _deckListsScreenState: MutableStateFlow<DeckListsScreenState> = MutableStateFlow(DeckListsScreenState.Loading)
     val deckListsScreenState: StateFlow<DeckListsScreenState> = _deckListsScreenState.asStateFlow()
 
@@ -23,7 +21,7 @@ class DeckListsScreenViewModel(private val flashcardRepo: FlashcardRepo): ViewMo
                 val decks = flashcardRepo.getDecks()
                 if(decks.isNotEmpty()){
                     _deckListsScreenState.value = DeckListsScreenState.Success(decks = decks.map {
-                        DeckListsItemUI(name = DeckListsItemName(it.name), id = DeckListsItemId(it.id))
+                        deckDomainToDeckListsItemUIUseCase(it)
                     })
                 }
                 else {

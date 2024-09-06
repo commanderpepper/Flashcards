@@ -1,4 +1,4 @@
-package usecase
+package usecase.data.network
 
 import models.data.DeckDomain
 import models.data.DeckNetwork

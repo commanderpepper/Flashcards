@@ -11,9 +11,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import models.ui.deck.DeckScreenState
-import models.ui.deck.FlashcardItem
+import usecase.data.ui.FlashcardDomainToFlashcardItemUIUseCase
 
-class DeckScreenViewModel(private val flashcardRepo: FlashcardRepo, val handle: SavedStateHandle): ViewModel() {
+class DeckScreenViewModel(private val flashcardRepo: FlashcardRepo, private val handle: SavedStateHandle, private val flashcardDomainToFlashcardItemUIUseCase: FlashcardDomainToFlashcardItemUIUseCase): ViewModel() {
     private val _deckScreenState : MutableStateFlow<DeckScreenState> = MutableStateFlow(DeckScreenState.Loading)
     val deckScreenState: StateFlow<DeckScreenState> = _deckScreenState.stateIn(
         scope = viewModelScope,
@@ -32,7 +32,7 @@ class DeckScreenViewModel(private val flashcardRepo: FlashcardRepo, val handle: 
                     val deck = flashcardRepo.getDeck(id)
                     if(deck != null){
                         val flashcards = deck.cards.map {
-                            FlashcardItem(front = it.front, back = it.back)
+                            flashcardDomainToFlashcardItemUIUseCase(it)
                         }
                         if(flashcards.isNotEmpty()){
                             _deckScreenState.value = DeckScreenState.Success(flashcards)

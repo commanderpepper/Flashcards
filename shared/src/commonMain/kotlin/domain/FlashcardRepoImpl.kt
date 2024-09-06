@@ -2,13 +2,14 @@ package domain
 
 import models.data.DeckDomain
 import network.FlashcardDataSource
-import usecase.DeckDomainToDeckNetworkUseCase
-import usecase.DeckNetworkToDeckDomainUseCase
+import usecase.data.network.DeckDomainToDeckNetworkUseCase
+import usecase.data.domain.DeckNetworkToDeckDomainUseCase
 
 class FlashcardRepoImpl(
     private val network: FlashcardDataSource,
     private val deckNetworkToDeckDomainUseCase: DeckNetworkToDeckDomainUseCase,
-    private val deckDomainToDeckNetworkUseCase: DeckDomainToDeckNetworkUseCase) : FlashcardRepo {
+    private val deckDomainToDeckNetworkUseCase: DeckDomainToDeckNetworkUseCase
+) : FlashcardRepo {
 
     override suspend fun getDecks(): List<DeckDomain> {
         return network.getFlashcards().map { deckNetworkToDeckDomainUseCase(it) }
