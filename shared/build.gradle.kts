@@ -28,6 +28,7 @@ kotlin {
             // put your Multiplatform dependencies here
             // Serialization
             implementation(libs.kotlinx.serialization)
+
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
@@ -46,6 +47,7 @@ kotlin {
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.client.serialization)
             implementation(libs.ktor.server.serialization)
+            implementation(libs.ktor.client.okhttp)
         }
 
         commonTest.dependencies {
