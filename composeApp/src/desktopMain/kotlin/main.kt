@@ -1,9 +1,12 @@
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import domain.di.domainModule
 import models.viewmodels.di.viewModelModule
 import network.di.networkModule
 import org.koin.core.context.startKoin
+import ui.theme.AppTypography
+import ui.theme.lightScheme
 import usecase.di.useCaseModule
 
 fun main(){
@@ -15,7 +18,12 @@ fun main(){
             onCloseRequest = ::exitApplication,
             title = "Flashcards",
         ) {
-            App()
+            MaterialTheme(
+                colorScheme = lightScheme,
+                typography = AppTypography
+            ){
+                App()
+            }
         }
     }
 }
