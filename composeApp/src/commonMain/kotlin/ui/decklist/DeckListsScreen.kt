@@ -35,16 +35,16 @@ fun DeckListsScreen(modifier: Modifier = Modifier, deckListsScreenState: DeckLis
             Loading(modifier = modifier)
         }
         is DeckListsScreenState.Success -> {
-            DeckListsScreen(deckList = deckListsScreenState.decks, onDeckClick = onDeckClick)
+            DeckListsScreen(modifier = modifier, deckList = deckListsScreenState.decks, onDeckClick = onDeckClick)
         }
     }
 
 }
 
 @Composable
-fun DeckListsScreen(deckList: List<DeckListsItemUI>, onDeckClick: (DeckListsItemId) -> Unit) {
+fun DeckListsScreen(modifier: Modifier, deckList: List<DeckListsItemUI>, onDeckClick: (DeckListsItemId) -> Unit) {
     val verticalArrangement = Arrangement.spacedBy(8.dp)
-    LazyColumn(contentPadding = PaddingValues(8.dp), verticalArrangement = verticalArrangement) {
+    LazyColumn(modifier = modifier, contentPadding = PaddingValues(8.dp), verticalArrangement = verticalArrangement) {
         items(items = deckList, key = {item -> item.id.idValue}){ item ->
             DeckListsItemUI(deckListsItemUI = item, onDeckClick = onDeckClick)
         }
