@@ -61,8 +61,7 @@ kotlin {
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
 
-//            implementation(libs.kotlinx.coroutines.core)
-//            implementation(libs.kotlinx.coroutines.javafx)
+            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }
