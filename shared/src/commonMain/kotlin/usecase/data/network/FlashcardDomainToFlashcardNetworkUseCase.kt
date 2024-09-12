@@ -5,6 +5,6 @@ import models.data.FlashcardNetwork
 
 class FlashcardDomainToFlashcardNetworkUseCase {
     operator fun invoke(flashcardDomain: FlashcardDomain): FlashcardNetwork {
-        return FlashcardNetwork(front = flashcardDomain.front, back = flashcardDomain.back)
+        return FlashcardNetwork(id = flashcardDomain.id, front = flashcardDomain.front, back = flashcardDomain.back)
     }
 }

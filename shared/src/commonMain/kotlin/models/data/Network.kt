@@ -13,4 +13,4 @@ data class DeckNetwork(
 
 @Serializable
 @SerialName("Flashcard")
-data class FlashcardNetwork(val front: String, val back: String)
+data class FlashcardNetwork(val id: String, val front: String, val back: String)

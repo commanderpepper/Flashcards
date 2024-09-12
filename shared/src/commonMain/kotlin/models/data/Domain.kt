@@ -11,4 +11,4 @@ data class DeckDomain(
 )
 
 @Serializable
-data class FlashcardDomain(val front: String, val back: String)
+data class FlashcardDomain(val id: String, val front: String, val back: String)
