@@ -86,7 +86,7 @@ fun EditDeckFlashCardItemUI(
                 }
                 Button(
                     onClick = {
-                        markFlashCardForDeletion(editDeckFlashCardItem)
+                        markFlashCardForDeletion(editDeckFlashCardItem.copy(markedForDeletion = editDeckFlashCardItem.markedForDeletion.not()))
                     },
                     border = if (editDeckFlashCardItem.markedForDeletion) BorderStroke(2.dp, Color.Red) else null
                 ) {

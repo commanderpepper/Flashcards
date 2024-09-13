@@ -34,4 +34,4 @@ val SAMPLE_EDIT_DECK_SCREEN_FLASHCARDS: List<EditDeckFlashCardItem> = listOf(
     EditDeckFlashCardItem(id = "5", front = "This is the front", back = "This is the back"),
 )
 private val SAMPLE_EDIT_DECK_SCREEN =
-    EditDeck(deckName = "Test Deck", flashCards = SAMPLE_EDIT_DECK_SCREEN_FLASHCARDS)
+    EditDeck(deckId = "1", deckName = "Test Deck", flashCards = SAMPLE_EDIT_DECK_SCREEN_FLASHCARDS)
