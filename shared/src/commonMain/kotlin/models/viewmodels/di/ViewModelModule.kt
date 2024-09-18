@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { DeckListsScreenViewModel(get(), get()) }
     viewModel { DeckScreenViewModel(get(), get(), get()) }
-    viewModel { EditDeckScreenViewModel(get(), get(), get(), get()) }
+    viewModel { EditDeckScreenViewModel(get(), get(), get(), get(), get()) }
 }

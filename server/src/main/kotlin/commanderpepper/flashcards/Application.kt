@@ -31,7 +31,7 @@ fun main() {
             DeckNetwork(
                 "1",
                 "Test",
-                listOf(FlashcardNetwork("This is the front", "This is the back"))
+                listOf(FlashcardNetwork("1","This is the front", "This is the back"))
             )
         )
     }

@@ -8,10 +8,11 @@ import org.koin.core.context.startKoin
 import ui.theme.AppTypography
 import ui.theme.lightScheme
 import usecase.di.useCaseModule
+import util.di.utilModule
 
 fun main(){
     startKoin {
-        modules(listOf(viewModelModule, networkModule, useCaseModule, domainModule))
+        modules(listOf(viewModelModule, networkModule, useCaseModule, domainModule, utilModule))
     }
     application {
         Window(

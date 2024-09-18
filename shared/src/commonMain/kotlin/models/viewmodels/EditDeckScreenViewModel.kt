@@ -12,10 +12,12 @@ import models.ui.editdeck.EditDeckFlashCardItem
 import models.ui.editdeck.EditDeckState
 import usecase.data.domain.EditDeckToDeckDomainUseCase
 import usecase.data.ui.DeckDomainToEditDeckUseCase
+import util.RandomIdGenerator
 
 class EditDeckScreenViewModel(
     private val repo: FlashcardRepo,
     private val handle: SavedStateHandle,
+    private val randomIdGenerator: RandomIdGenerator,
     private val deckDomainToEditDeckUseCase: DeckDomainToEditDeckUseCase,
     private val editDeckToDeckDomainUseCase: EditDeckToDeckDomainUseCase
 ) : ViewModel() {
@@ -44,18 +46,19 @@ class EditDeckScreenViewModel(
             }
         }
         else {
+            editDeck = editDeck.copy(deckId = randomIdGenerator.generateId())
             _editDeckState.value = EditDeckState.Success(editDeck)
         }
     }
 
     fun addNewFlashCard(){
-        val flashcards = editDeck.flashCards + listOf(EditDeckFlashCardItem("", "", ""))
+        val flashcards = editDeck.flashCards + listOf(EditDeckFlashCardItem(randomIdGenerator.generateId(), "", ""))
         editDeck = editDeck.copy(flashCards = flashcards)
         _editDeckState.value = EditDeckState.Success(editDeck)
     }
 
-    suspend fun saveDeck(){
-        repo.updateDeck(editDeckToDeckDomainUseCase(editDeck))
+    suspend fun saveDeck(deckName: String){
+        repo.updateDeck(editDeckToDeckDomainUseCase(editDeck.copy(deckName = deckName)))
     }
 
     fun onFlashcardSaveChanges(flashCardItem: EditDeckFlashCardItem){

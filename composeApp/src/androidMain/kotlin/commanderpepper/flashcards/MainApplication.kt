@@ -8,6 +8,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import usecase.di.useCaseModule
+import util.di.utilModule
 
 class MainApplication: Application() {
     override fun onCreate() {
@@ -17,7 +18,7 @@ class MainApplication: Application() {
             androidLogger()
             androidContext(this@MainApplication)
             //add modules here
-            modules(listOf(viewModelModule, networkModule, useCaseModule, domainModule))
+            modules(listOf(viewModelModule, networkModule, useCaseModule, domainModule, utilModule))
         }
     }
 }

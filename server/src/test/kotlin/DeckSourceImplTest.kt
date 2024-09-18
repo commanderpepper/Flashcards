@@ -8,7 +8,7 @@ import kotlin.test.Test
 class DeckSourceImplTest {
 
     private val deckNetwork = DeckSourceImpl()
-    private val flashcards = listOf(FlashcardNetwork("A", "B"))
+    private val flashcards = listOf(FlashcardNetwork("1","A", "B"))
     private val testDeck = DeckNetwork("1", "test one", flashcards)
 
     @Test
