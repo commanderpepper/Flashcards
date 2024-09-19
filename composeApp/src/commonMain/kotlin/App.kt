@@ -45,7 +45,9 @@ fun App() {
                     nullable = false
                 })
             ) {
-                DeckScreen(modifier = Modifier.fillMaxSize())
+                DeckScreen(modifier = Modifier.fillMaxSize()){ deckId ->
+                    navController.navigate(route = FlashcardScreen.Edit.route + "?deckId=${deckId}")
+                }
             }
             composable(route = FlashcardScreen.Edit.route + "?deckId={deckId}",
                 arguments = listOf(navArgument("deckId"){

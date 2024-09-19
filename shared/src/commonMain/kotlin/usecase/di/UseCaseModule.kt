@@ -9,6 +9,7 @@ import usecase.data.domain.EditDeckToDeckDomainUseCase
 import usecase.data.ui.FlashcardDomainToFlashcardItemUIUseCase
 import usecase.data.network.FlashcardDomainToFlashcardNetworkUseCase
 import usecase.data.domain.FlashcardNetworkToFlashcardDomainUseCase
+import usecase.data.ui.DeckDomainToDeckScreenDeckUI
 import usecase.data.ui.DeckDomainToEditDeckUseCase
 import usecase.data.ui.FlashcardDomainToEditDeckFlashCardItemUseCase
 
@@ -27,4 +28,6 @@ val useCaseModule = module {
 
     single { EditDeckFlashCardItemToFlashcardDomainUseCase() }
     single { EditDeckToDeckDomainUseCase(get()) }
+
+    single { DeckDomainToDeckScreenDeckUI(get()) }
 }

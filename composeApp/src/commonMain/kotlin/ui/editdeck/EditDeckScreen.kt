@@ -24,15 +24,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import models.ui.editdeck.EditDeck
 import models.ui.editdeck.EditDeckFlashCardItem
 import models.ui.editdeck.EditDeckState
-import models.viewmodels.DeckScreenViewModel
 import models.viewmodels.EditDeckScreenViewModel
 import org.koin.compose.viewmodel.koinViewModel
 import ui.deck.NoFlashcards

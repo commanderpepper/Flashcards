@@ -28,8 +28,8 @@ fun EditDeckFlashCardItemUI(
     onFlashcardSaveChanges: (EditDeckFlashCardItem) -> Unit,
     markFlashCardForDeletion: (EditDeckFlashCardItem) -> Unit
 ) {
-    var front by remember { mutableStateOf("") }
-    var back by remember { mutableStateOf("") }
+    var front by remember { mutableStateOf(editDeckFlashCardItem.front) }
+    var back by remember { mutableStateOf(editDeckFlashCardItem.back) }
 
     Card(modifier = Modifier.padding(4.dp).fillMaxWidth().requiredHeight(128.dp)) {
         Column(modifier = Modifier.padding(4.dp)) {
