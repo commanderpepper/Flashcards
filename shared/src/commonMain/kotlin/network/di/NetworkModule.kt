@@ -41,7 +41,8 @@ val networkModule = module {
             install(DefaultRequest) {
                 url {
                     protocol = URLProtocol.HTTP
-                    host = "10.0.2.2:8080"
+                    host = "10.0.2.2:8080" // Android
+                    // host = "127.0.0.1:8080" desktop
                     path("/")
                 }
                 header(HttpHeaders.ContentType, ContentType.Application.Json)

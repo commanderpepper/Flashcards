@@ -45,7 +45,9 @@ fun App() {
                     nullable = false
                 })
             ) {
-                DeckScreen(modifier = Modifier.fillMaxSize()){ deckId ->
+                DeckScreen(modifier = Modifier.fillMaxSize(), onBackButton = {
+                    navController.navigate(route = FlashcardScreen.List.route)
+                }){ deckId ->
                     navController.navigate(route = FlashcardScreen.Edit.route + "?deckId=${deckId}")
                 }
             }
@@ -54,8 +56,19 @@ fun App() {
                     type = NavType.StringType
                     nullable = true
                 })
-            ) {
-                EditDeckScreen(modifier = Modifier.fillMaxSize(), navController = navController)
+            ) { navBackEntry ->
+                EditDeckScreen(modifier = Modifier.fillMaxSize(),
+                    onBackButton = { deckId ->
+                        if(navBackEntry.arguments?.get("deckId") != null){
+                            navController.navigate(route = FlashcardScreen.Deck.route + "?deckId=${deckId}")
+                        }
+                        else {
+                            navController.navigate(route = FlashcardScreen.List.route)
+                        }
+                    },
+                    onSaveButton = { deckId ->
+                        navController.navigate(route = FlashcardScreen.Deck.route + "?deckId=${deckId}")
+                    })
             }
         }
     }

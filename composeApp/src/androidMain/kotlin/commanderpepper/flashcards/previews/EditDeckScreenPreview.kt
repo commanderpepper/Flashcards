@@ -1,7 +1,6 @@
 package commanderpepper.flashcards.previews
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,7 +16,8 @@ fun EditDeckScreenPreview() {
         editDeck = SAMPLE_EDIT_DECK_SCREEN,
         addNewFlashCard = {},
         markFlashCardForDeletion = {},
-        saveDeck = {},
+        saveDeck = { _, _ -> },
+        onBackButton = {},
         onFlashcardSaveChanges = {})
 }
 
