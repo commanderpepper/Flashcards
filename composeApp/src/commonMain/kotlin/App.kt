@@ -32,10 +32,10 @@ fun App() {
             composable(route = FlashcardScreen.List.route) {
                 DeckListsScreen(modifier = Modifier.fillMaxSize(),
                     onNewDeck = {
-                        navController.navigate(route = FlashcardScreen.Edit.route)
+                        navController.navigateSingleTopTo(route = FlashcardScreen.Edit.route)
                     },
                     onDeckClick = { deckListsItemId ->
-                        navController.navigate(route = FlashcardScreen.Deck.route + "?deckId=${deckListsItemId.idValue}")
+                        navController.navigateSingleTopTo(route = FlashcardScreen.Deck.route + "?deckId=${deckListsItemId.idValue}")
                     })
             }
             composable(
@@ -46,9 +46,9 @@ fun App() {
                 })
             ) {
                 DeckScreen(modifier = Modifier.fillMaxSize(), onBackButton = {
-                    navController.navigate(route = FlashcardScreen.List.route)
+                    navController.navigateSingleTopTo(route = FlashcardScreen.List.route)
                 }){ deckId ->
-                    navController.navigate(route = FlashcardScreen.Edit.route + "?deckId=${deckId}")
+                    navController.navigateSingleTopTo(route = FlashcardScreen.Edit.route + "?deckId=${deckId}")
                 }
             }
             composable(route = FlashcardScreen.Edit.route + "?deckId={deckId}",
@@ -60,16 +60,19 @@ fun App() {
                 EditDeckScreen(modifier = Modifier.fillMaxSize(),
                     onBackButton = { deckId ->
                         if(navBackEntry.arguments?.get("deckId") != null){
-                            navController.navigate(route = FlashcardScreen.Deck.route + "?deckId=${deckId}")
+                            navController.navigateSingleTopTo(route = FlashcardScreen.Deck.route + "?deckId=${deckId}")
                         }
                         else {
-                            navController.navigate(route = FlashcardScreen.List.route)
+                            navController.navigateSingleTopTo(route = FlashcardScreen.List.route)
                         }
                     },
                     onSaveButton = { deckId ->
-                        navController.navigate(route = FlashcardScreen.Deck.route + "?deckId=${deckId}")
+                        navController.navigateSingleTopTo(route = FlashcardScreen.Deck.route + "?deckId=${deckId}")
                     })
             }
         }
     }
 }
+
+fun NavHostController.navigateSingleTopTo(route: String) =
+    this.navigate(route) { launchSingleTop = true }
