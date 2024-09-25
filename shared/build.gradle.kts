@@ -47,13 +47,13 @@ kotlin {
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.client.serialization)
             implementation(libs.ktor.server.serialization)
-            implementation(libs.ktor.client.okhttp)
+//            implementation(libs.ktor.client.okhttp)
         }
 
         commonTest.dependencies {
             implementation(libs.ktor.client.mock)
-            implementation(libs.kotlin.test.junit)
-            implementation(libs.junit.jupiter)
+//            implementation(libs.kotlin.test.junit)
+//            implementation(libs.junit.jupiter)
             implementation(libs.kotlin.coroutines.test)
         }
 
