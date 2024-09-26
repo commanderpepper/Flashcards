@@ -14,10 +14,17 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "shared"
+            isStatic = true
+        }
+    }
     
     jvm()
     
@@ -53,7 +60,6 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.ktor.client.mock)
 //            implementation(libs.kotlin.test.junit)
-//            implementation(libs.junit.jupiter)
             implementation(libs.kotlin.coroutines.test)
         }
 
