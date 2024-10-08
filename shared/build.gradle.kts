@@ -43,6 +43,7 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.composeVM)
+            implementation(libs.koin.viewmodel)
 
             //Logging
             implementation(libs.kermit)
